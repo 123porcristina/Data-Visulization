@@ -1,12 +1,76 @@
 *
 {
-    margin: 0%;
-    padding: 0%;
+    margin: 0;
+    padding: 0;
 }
 
+/*conf. image in the background*/
 header{
-    background-image: url(images/map_countries.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../images/world.jpg);
     height: 100vh;
     background-size: cover;
     background-position: center;
+}
+
+/* Menu */
+.main-nav{
+    float: right;
+    list-style: none;
+    margin-top: 30px;
+}
+
+/* avoid menu appears in a list form*/
+.main-nav li{
+    display: inline-block;
+}
+
+/*change color and other attr of the menu*/
+.main-nav li a{
+    color: white;
+    text-decoration: none;
+    padding: 5px 20px ;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+}
+
+/* draw a box around the each item in the menu*/
+.main-nav li.active a{
+    border: 1px solid white;
+}
+
+.main-nav li a:hover{
+    border: 1px solid white;
+}
+
+.logo img{
+    width: 150px;
+    height: auto;
+    float: left;
+}
+
+body{
+    font-family: monospace;
+}
+
+.row{
+    max-width: 1200px;
+    margin: auto;
+}
+
+/*tittle*/
+.hero{
+    position: absolute;
+    width: 1200px;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+h1{
+    color: white;
+    text-transform: uppercase;
+    font-size: 70px;
+    text-align: center;
+    margin-top: 275px;
+    
+
 }
