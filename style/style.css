@@ -183,7 +183,7 @@ that appear on the center of my page*/
     padding-top: 50px;
     padding-bottom: 50px;
     color: #ffffff;
-    background-color: aqua!important;
+    background-color: #001b48!important;
     background-size: cover;
     /* background-position: center; */
 }
@@ -192,5 +192,104 @@ that appear on the center of my page*/
     padding-top: 20px;
     text-align: justify;
     color: #007bff!important;
+}
+
+/* analysisHealth */
+#analysisHealth{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffffff;
+    background-color: #004581!important;
+    background-size: cover;
+    /* background-position: center; */
+}
+
+
+/* analysisMilitary */
+#analysisMilitary{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffffff;
+    background-color: #018abd!important;
+    background-size: cover;
+    /* background-position: center; */
+}
+
+/* Education Spending & Military Spending */
+#analysisEduMil{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffffff;
+    background-color: #97cbdc!important;
+    background-size: cover;
+    /* background-position: center; */
+}
+
+/* Healthcare Spending vs Military Spending */
+#analysisHealthMilitary{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffffff;
+    background-color: #76525c!important;
+    background-size: cover;
+    /* background-position: center; */
+}
+
+/* Education per capita vs GDP per Capita */
+#analysisMilitaryEducation{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffffff;
+    background-color: #5c3959!important;
+    background-size: cover;
+    /* background-position: center; */
+
+}
+
+/* Healthcare per capita vs GDP per Capita  */
+#analysisHealthGDP{
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffffff;
+    background-color: #384c8b!important;
+    background-size: cover;
+    /* background-position: center; */
+
+}
+
+/* Military per capita vs GDP per Capita */
+#analysisMilitaryGDP{
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffffff;
+    background-color: #142553!important;
+    background-size: cover;
+    /* background-position: center; */
+}
+
+/* Fastest growing countries in healthcare and educational spending in Fix */
+#analysisFastFix{
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffffff;
+    background-color: #391924!important;
+    background-size: cover;
+    /* background-position: center; */
+
+}
+
+/* Fastest growing countries in healthcare and educational spending in % */
+#analysisFastPerc{
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffffff;
+    background-color: #142553!important;
+    background-size: cover;
+    /* background-position: center; */
+
 }
 
