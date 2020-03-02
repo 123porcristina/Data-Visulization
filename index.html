@@ -626,7 +626,7 @@
                     <button type="button" class="btn btn-primary" onclick="window.location.href = 'https://en.wikipedia.org/wiki/G20';">Read more</button>
                 </div>
                 <div class="col-md-6">
-                    
+                   
                 </div>
             </div>
         </div>
@@ -675,69 +675,143 @@
 
 
     <!-- plot charts -->
-    <h3>Compare the spending data to that country’s GDP</h3>
- 
-    <!-- Plot %Education vs GDP -->
-    <div class="ggl-dashboard" id="dashboard_div">
-        <div class="ggl-control" id="control_div"></div>
-        <div class="ggl-chart" id="chart_div"></div>
-      </div>
+    <section id="analysisDataGDP">
+        <div class="container">
+            <div class="row analysis">
+                <h3>Spending Education Data vs Country’s GDP</h3>
+                <div class="col-md-8 text-left" >
+                    <!-- Plot %Education vs GDP -->
+                    <div class="ggl-dashboard" id="dashboard_div">
+                        <div class="ggl-control" id="control_div"></div>
+                        <div class="ggl-chart" id="chart_div"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-right">
+                    <div class="analysisDataGDP-content">
+                        <p>
+                        esto es una prueba para ver como funciona. asi que borralo! 
+                        The first value is the horizontal position and the second value 
+                        is the vertical. The top left corner is 0% 0%. The right bottom 
+                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
+                        Default value is: 0% 0%
+
+                        esto es una prueba para ver como funciona. asi que borralo! 
+                        The first value is the horizontal position and the second value 
+                        is the vertical. The top left corner is 0% 0%. The right bottom 
+                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
+                        Default value is: 0% 0%
+
+                        esto es una prueba para ver como funciona. asi que borralo! 
+                        The first value is the horizontal position and the second value 
+                        is the vertical. The top left corner is 0% 0%. The right bottom 
+                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
+                        Default value is: 0% 0%
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Plot %Healthcare vs GDP -->
-    <div class="ggl-dashboard" id="dashboard_div2">
-        <div class="ggl-control" id="control_div2"></div>
-        <div id="chart_div_line_health"></div>
-    </div>
+    <section id="analysisHealth">
+            <div class="container">
+                <div class="row analysis">
+                    <h3>Spending Healthcare Data vs Country’s GDP</h3>
+                    <div class="col-md-8 text-left" >
+                        <div class="row analysis">
+                            <div class="ggl-dashboard" id="dashboard_div2">
+                                <div class="ggl-control" id="control_div2"></div>
+                                <div id="chart_div_line_health"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
 
     <!-- Plot %Military vs GDP -->
-    <div class="ggl-dashboard" id="dashboard_div3">
-        <div class="ggl-control" id="control_div3"></div>
-        <div id="chart_div_line_military"></div>
-    </div>
-
-     <!-- Plot Education Spending vs Military Spending -->
-     <div class="ggl-dashboard" id="dashboard_div4">
-        <div class="ggl-control" id="control_div4"></div>
-        <div id="chart_div_line_EvsM"></div>
-    </div>
-
-    <!-- Plot Healthcare Spending vs Military Spending -->
-    <div class="ggl-dashboard" id="dashboard_div5">
-        <div class="ggl-control" id="control_div5"></div>
-        <div id="chart_div_line_HvsM"></div>
-    </div>
-
-    <!-- Plot Education per capita vs GDP per Capita -->
-    <div class="ggl-dashboard" id="dashboard_div6">
-        <div class="ggl-control" id="control_div6"></div>
-        <div id="chart_div_line_EduPCvsGDPPC"></div>
-    </div>
-    
-    <!-- Plot Healthcare per capita vs GDP per Capita -->
-    <div class="ggl-dashboard" id="dashboard_div7">
-        <div class="ggl-control" id="control_div7"></div>
-        <div id="chart_div_line_HealtPCvsGDPPC"></div>
-    </div>
-
-     <!-- Plot Military per capita vs GDP per Capita -->
-     <div class="ggl-dashboard" id="dashboard_div8">
-            <div class="ggl-control" id="control_div8"></div>
-            <div id="chart_div_line_MilitaryPCvsGDPPC"></div>
+    <section id="analysisMilitary">
+        <div class="container">
+            <div class="row analysis">
+                <h3>Spending Military Data vs Country’s GDP</h3>
+                <div class="row analysis">
+                    <div class="ggl-dashboard" id="dashboard_div3">
+                        <div class="ggl-control" id="control_div3"></div>
+                        <div id="chart_div_line_military"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-    <!--Table and divs that hold the pie charts-->
-    <table class="columns">
-        <tr>
-          <td><div id="Sarah_chart_div" style="border: 1px solid #ccc"></div></td>
-          <td><div id="Anthony_chart_div" style="border: 1px solid #ccc"></div></td>
-        </tr>
-      </table>
+    <!-- Plot Education Spending vs Military Spending -->
+    <section id="analysisMilitary">
+            <div class="container">
+                <div class="row analysis">
+                    <h3>Eduaction Spending vs Military Spending</h3>
+                    <div class="row analysis">
+                        <div class="ggl-dashboard" id="dashboard_div4">
+                            <div class="ggl-control" id="control_div4"></div>
+                            <div id="chart_div_line_EvsM"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
 
-      <!-- Plot Military per capita vs GDP per Capita -->
-     <div class="ggl-dashboard" id="dashboard_div9">
-            <div class="ggl-control" id="control_div9"></div>
-            <div id="chart_div_line_fastGrowth"></div>
-        </div>
+
+            <!-- Plot Healthcare Spending vs Military Spending -->
+            <div class="row analysis">
+                <div class="ggl-dashboard" id="dashboard_div5">
+                    <div class="ggl-control" id="control_div5"></div>
+                    <div id="chart_div_line_HvsM"></div>
+                </div>
+            </div>
+
+            <!-- Plot Education per capita vs GDP per Capita -->
+            <div class="row analysis">
+                <div class="ggl-dashboard" id="dashboard_div6">
+                    <div class="ggl-control" id="control_div6"></div>
+                    <div id="chart_div_line_EduPCvsGDPPC"></div>
+                </div>
+            </div>
+            
+            <!-- Plot Healthcare per capita vs GDP per Capita -->
+            <div class="row analysis">
+                <div class="ggl-dashboard" id="dashboard_div7">
+                    <div class="ggl-control" id="control_div7"></div>
+                    <div id="chart_div_line_HealtPCvsGDPPC"></div>
+                </div>
+            </div>
+
+            <!-- Plot Military per capita vs GDP per Capita -->
+            <div class="row analysis">
+                <div class="ggl-dashboard" id="dashboard_div8">
+                    <div class="ggl-control" id="control_div8"></div>
+                    <div id="chart_div_line_MilitaryPCvsGDPPC"></div>
+                </div>
+            </div>
+
+            <!--Table and divs that hold the pie charts-->
+            <div class="row analysis">
+                <table class="columns">
+                    <tr>
+                    <td><div id="Sarah_chart_div" style="border: 1px solid #ccc"></div></td>
+                    <td><div id="Anthony_chart_div" style="border: 1px solid #ccc"></div></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Plot Military per capita vs GDP per Capita -->
+            <div class="row analysis">
+                <div class="ggl-dashboard" id="dashboard_div9">
+                    <div class="ggl-control" id="control_div9"></div>
+                    <div id="chart_div_line_fastGrowth"></div>
+                </div>
+            </div>
+        <!-- </div>
+</section>  -->
 
 </body>
 </html>

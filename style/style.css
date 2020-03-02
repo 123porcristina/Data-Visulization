@@ -126,7 +126,6 @@ that appear on the center of my page*/
 }
 
 
-
 #analysis{
     background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(../images/image02.jpg);
     background-size: cover;
@@ -178,3 +177,20 @@ that appear on the center of my page*/
     cursor: pointer;
     transition: 0.7s
 }
+
+/* analysisDataGDP  */
+#analysisDataGDP{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffffff;
+    background-color: aqua!important;
+    background-size: cover;
+    /* background-position: center; */
+}
+
+.analysisDataGDP-content{
+    padding-top: 20px;
+    text-align: justify;
+    color: #007bff!important;
+}
+
