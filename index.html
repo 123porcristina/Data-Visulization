@@ -77,7 +77,7 @@
                 'chartType': 'BubbleChart',
                 'containerId': 'chart_div',
                 'options': {title:'GDP vs Eduaction',
-                            'width': 800,
+                            'width': 700,
                             'height': 500,
                             'legend': 'right',
                             hAxis: {title: 'GDP (USD Billions)',
@@ -136,7 +136,7 @@
                 'containerId': 'chart_div_line_health',
                 'options': {
                     title:'GDP vs Healthcare',
-                    'width': 800,
+                    'width': 700,
                     'height': 500,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
@@ -188,7 +188,7 @@
                 'containerId': 'chart_div_line_military',
                 'options': {
                     title:'GDP vs Military Spending',
-                    'width': 800,
+                    'width': 700,
                     'height': 500,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
@@ -247,7 +247,7 @@
                 'containerId': 'chart_div_line_EvsM',
                 'options': {
                     title:'Education Spending vs Military Spending',
-                    'width': 800,
+                    'width': 700,
                     'height': 500,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
@@ -297,7 +297,7 @@
                 'containerId': 'chart_div_line_HvsM',
                 'options': {
                     title:'Healthcare Spending vs Military Spending',
-                    'width': 800,
+                    'width': 700,
                     'height': 500,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
@@ -346,7 +346,7 @@
                 'containerId': 'chart_div_line_EduPCvsGDPPC',
                 'options': {
                     title:'Education Spending per Capita vs GDP per Capita',
-                    'width': 800,
+                    'width': 700,
                     'height': 500,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
@@ -395,7 +395,7 @@
                 'containerId': 'chart_div_line_HealtPCvsGDPPC',
                 'options': {
                     title:'Education Spending per Capita vs GDP per Capita',
-                    'width': 800,
+                    'width': 700,
                     'height': 500,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
@@ -443,7 +443,7 @@
                 'containerId': 'chart_div_line_MilitaryPCvsGDPPC',
                 'options': {
                     title:'Military Spending per Capita vs GDP per Capita',
-                    'width': 800,
+                    'width': 700,
                     'height': 500,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
@@ -541,7 +541,7 @@
                 'containerId': 'chart_div_line_fastGrowth',
                 'options': {
                     title:'Growth in percentage',
-                    'width': 800,
+                    'width': 700,
                     'height': 500,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
@@ -718,7 +718,7 @@
             <div class="container">
                 <div class="row analysis">
                     <h3>Spending Healthcare Data vs Country’s GDP</h3>
-                    <div class="col-md-8 text-left" >
+                    <div class="col-md-8 text-right" >
                         <div class="row analysis">
                             <div class="ggl-dashboard" id="dashboard_div2">
                                 <div class="ggl-control" id="control_div2"></div>
@@ -735,10 +735,12 @@
         <div class="container">
             <div class="row analysis">
                 <h3>Spending Military Data vs Country’s GDP</h3>
-                <div class="row analysis">
-                    <div class="ggl-dashboard" id="dashboard_div3">
-                        <div class="ggl-control" id="control_div3"></div>
-                        <div id="chart_div_line_military"></div>
+                <div class="col-md-8 text-left" >
+                    <div class="row analysis">
+                        <div class="ggl-dashboard" id="dashboard_div3">
+                            <div class="ggl-control" id="control_div3"></div>
+                            <div id="chart_div_line_military"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -750,10 +752,12 @@
             <div class="container">
                 <div class="row analysis">
                     <h3>Eduaction Spending vs Military Spending</h3>
-                    <div class="row analysis">
-                        <div class="ggl-dashboard" id="dashboard_div4">
-                            <div class="ggl-control" id="control_div4"></div>
-                            <div id="chart_div_line_EvsM"></div>
+                    <div class="col-md-8 text-right" >
+                        <div class="row analysis">
+                            <div class="ggl-dashboard" id="dashboard_div4">
+                                <div class="ggl-control" id="control_div4"></div>
+                                <div id="chart_div_line_EvsM"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -766,10 +770,12 @@
         <div class="container">
             <div class="row analysis">
                 <h3>Healthcare Spending vs Military Spending</h3>
-                <div class="row analysis">
-                    <div class="ggl-dashboard" id="dashboard_div5">
-                        <div class="ggl-control" id="control_div5"></div>
-                        <div id="chart_div_line_HvsM"></div>
+                <div class="col-md-8 text-left" >
+                    <div class="row analysis">
+                        <div class="ggl-dashboard" id="dashboard_div5">
+                            <div class="ggl-control" id="control_div5"></div>
+                            <div id="chart_div_line_HvsM"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -781,10 +787,12 @@
         <div class="container">
             <div class="row analysis">
                 <h3>Education Spending vs GDP per Capita</h3>
-                <div class="row analysis">
-                    <div class="ggl-dashboard" id="dashboard_div6">
-                        <div class="ggl-control" id="control_div6"></div>
-                        <div id="chart_div_line_EduPCvsGDPPC"></div>
+                <div class="col-md-8 text-right" >
+                    <div class="row analysis">
+                        <div class="ggl-dashboard" id="dashboard_div6">
+                            <div class="ggl-control" id="control_div6"></div>
+                            <div id="chart_div_line_EduPCvsGDPPC"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -796,10 +804,12 @@
         <div class="container">
             <div class="row analysis">
                 <h3>Healthcare per capita vs GDP per Capita</h3>
-                <div class="row analysis">
-                    <div class="ggl-dashboard" id="dashboard_div7">
-                        <div class="ggl-control" id="control_div7"></div>
-                        <div id="chart_div_line_HealtPCvsGDPPC"></div>
+                <div class="col-md-8 text-left" >
+                    <div class="row analysis">
+                        <div class="ggl-dashboard" id="dashboard_div7">
+                            <div class="ggl-control" id="control_div7"></div>
+                            <div id="chart_div_line_HealtPCvsGDPPC"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -812,10 +822,12 @@
         <div class="container">
             <div class="row analysis">
                 <h3>Military per capita vs GDP per Capita</h3>
-                <div class="row analysis">
-                    <div class="ggl-dashboard" id="dashboard_div8">
-                        <div class="ggl-control" id="control_div8"></div>
-                        <div id="chart_div_line_MilitaryPCvsGDPPC"></div>
+                <div class="col-md-8 text-right" >
+                    <div class="row analysis">
+                        <div class="ggl-dashboard" id="dashboard_div8">
+                            <div class="ggl-control" id="control_div8"></div>
+                            <div id="chart_div_line_MilitaryPCvsGDPPC"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -828,14 +840,16 @@
         <div class="container">
             <div class="row analysis">
                 <h3>Fastest growing countries in healthcare and educational spending in fixed value</h3>
-                <div class="row analysis">
-                    <table class="columns">
-                        <tr>
-                        <td><div id="Sarah_chart_div" style="border: 1px solid #ccc"></div></td>
-                        <td><div id="Anthony_chart_div" style="border: 1px solid #ccc"></div></td>
-                        </tr>
-                    </table>
-                </div>
+                <!-- <div class="col-md-12 text-center" ></div> -->
+                    <div class="row analysis">
+                        <table class="columns">
+                            <tr>
+                            <td><div id="Sarah_chart_div" style="border: 1px solid #ccc"></div></td>
+                            <td><div id="Anthony_chart_div" style="border: 1px solid #ccc"></div></td>
+                            </tr>
+                        </table>
+                    </div>
+                <!-- </div> -->
             </div>
         </div>
     </section>
