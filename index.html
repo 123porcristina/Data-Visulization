@@ -23,29 +23,11 @@
 
 
         function drawAllSheets(){
-            drawSheetName('Sheet1', 'SELECT A, D, G, J, M', militarySpendingResponseHandler);
+            drawSheetName('Ex1', 'SELECT A, C, E, B WHERE (B>2012)', EducationVsGDPSpendingResponseHandler);
 
-            // drawSheetName(
-            //     'militaryspending', 'SELECT A, F',
-            //     topMilitarySpendingResponseHandler
-            // );
-            // drawSheetName('meanmilitaryspending', 'SELECT A,G', 
-            // meanSpendingResponseHandler);
+            // drawSheetName('Ex1', 'SELECT A, C, H, I, B WHERE (B>2012) ', HealthVsGDPSpendingResponseHandler);
 
-            // drawSheetName('sharedgdp', 'SELECT A,B,C,D,E,F', 
-            // sharedGDPResponseHandler);
-
-            // drawSheetName('sharedgdp', 'SELECT A,F', 
-            // topsharedGDPResponseHandler);
-
-            //  drawSheetName('percapita', 'SELECT A,F', 
-            // toppercapitaResponseHandler);
-
-            //  drawSheetName('percapitagdp', 'SELECT A,P,Q,R,S,T', 
-            // percapitaGDPResponseHandler);
-
-            // drawSheetName('annualgrowth', 'SELECT A,G', 
-            // annualgrowthResponseHandler);
+            // drawSheetName('Ex1', 'SELECT A, C, H, I,  B WHERE (B>2012) ', HealthVsGDPSpendingResponseHandler);
 
         } //drawAllSheets
 
@@ -55,47 +37,56 @@
             query.send(responseHandler);
         }//drawSheetName. This propertly encondes the link.
 
-        function militarySpendingResponseHandler(response){ //the response is the query that is coming to us.
+       
+        function EducationVsGDPSpendingResponseHandler(response){ //the response is the query that is coming to us.
             var data = response.getDataTable();
-            data.sort({column:1, desc:true}); //basically is column F
+            // Create a dashboard.
+            var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div'));
 
-            //  var options = {
-            //         title: 'Correlation between life expectancy, fertility rate ' +
-            //             'and population of some world countries (2010)',
-            //         hAxis: {title: 'Year'},
-            //         vAxis: {title: 'Country'},
-            //         bubble: {textStyle: {fontSize: 11}}      };
+            // // Create Filter    
+            var programmaticFilter = new google.visualization.ControlWrapper({
+                controlType: 'CategoryFilter',
+                containerId: 'control_div',
+                options: {
+                filterColumnLabel: 'Year',
+                ui: {
+                    labelStacking: 'vertical'
+                }
+                }
+            });
 
-            //     var chart = new google.visualization.BubbleChart(document.getElementById('military_spending_div'));
-            //     chart.draw(data, options);
-            //     }
+            // Create a Bubble chart, passing some options
+             var BubbleChartEdu = new google.visualization.ChartWrapper({
+                'chartType': 'BubbleChart',
+                'containerId': 'chart_div',
+                'options': {title:'GDP vs Eduaction',
+                            'width': 800,
+                            'height': 500,
+                            'legend': 'right',
+                            hAxis: {title: 'GDP (USD Billions)',
+                            logScale:'true'},
+                            vAxis: {title: '%Education as part of GDP',
+                            format: 'Percent'},
+                            colorAxis:{values:'Year'},
+                // //     // colorAxis: {colors: ['yellow', 'red']},
+                            bubble: {textStyle: {fontSize: 11}}
+                },
+            });
 
-            var options = {
-                width: 600,
-                height: 400,
-                legend: { position: 'top', maxLines: 3 },
-                bar: { groupWidth: '75%' },
-                isStacked: true,
-            };
+            // Establish dependencies, declaring that 'filter' drives 'pieChart',
+            // so that the pie chart will only display entries that are let through
+            // given the chosen slider range.
+            dashboard.bind(programmaticFilter, BubbleChartEdu);
 
-             var chart = new google.visualization.ColumnChart(
-                document.getElementById("military_spending_div")
-            );
+        // Draw the dashboard.
+        dashboard.draw(data);
+        
+        }
+    
 
-            chart.draw(data, options);}
-
-        //     var options = {
-        //         height:400,
-        //         vAxis: {title: 'Spending in Billions ($)'},
-        //         hAxis: {title: 'Country'}
-        //     }; // if we dont, it self by default options
-
-        //     var chart = new google.visualization.ColumnChart(
-        //         document.getElementById("military_spending_div")
-        //     );
-
-        //     chart.draw(data, options);
-        // }// militarySpendingResponseHandler
+        
+        
     
     </script>
     <!-- End Google API -->
@@ -195,8 +186,46 @@
 
 
     <!-- plot charts -->
-    <h3>Military Spending Analysis for Top Countries</h3>
-    <div id="military_spending_div" style="width: 900px; height: 500px"></div>
+
+    <h3>Compare the spending data to that country’s GDP</h3>
+    <!-- <h3>Military Spending Analysis for Top Countries</h3>
+    <div id="military_spending_div" style="width: 900px; height: 500px"></div> -->
+
+    <!--Div that will hold the dashboard-->
+    <!-- <div id="dashboard_div"> -->
+        <!--Divs that will hold each control and chart-->
+        <!-- <div id="filter_div"></div> -->
+        <!-- <div id="chart_div"></div> -->
+    <!-- </div> -->
+
+    <!-- Plot %Education vs GDP -->
+
+    <div class="ggl-dashboard" id="dashboard_div">
+        <div class="ggl-control" id="control_div"></div>
+        <div class="ggl-chart" id="chart_div"></div>
+        <!-- <div class="ggl-chart" id="chart_div_Josh"></div> -->
+      </div>
+
+    <!-- <div class="ggl-dashboard" id="dashboard_div">
+        <div id="filter_div"></div>
+        <div class="ggl-control" id="control_div"></div>
+        <div class="ggl-chart" id="chart_div"></div> -->
+        <!-- <div id="chart_div_line_health"></div> -->
+        <!-- <div class="ggl-chart" id="chart_div2"></div> -->
+    <!-- </div> -->
+
+    <!-- Plot %Healthcare vs GDP -->
+    <!-- <div class="ggl-dashboard" id="dashboard_div2">
+        <div class="ggl-control" id="control_div2"></div>
+        <div id="chart_div_line_health"></div>
+    </div> -->
+
+    <!-- Plot %Military vs GDP -->
+    <!-- <div class="ggl-dashboard" id="dashboard_div3">
+        <div class="ggl-control" id="control_div3"></div>
+        <div id="chart_div_line_military"></div>
+    </div> -->
+
 
 
 </body>
