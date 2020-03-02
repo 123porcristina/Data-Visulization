@@ -24,10 +24,21 @@
 
         function drawAllSheets(){
             drawSheetName('Ex1', 'SELECT A, C, E, B WHERE (B>2012)', EducationVsGDPSpendingResponseHandler);
-
             drawSheetName('Ex1', 'SELECT A, C, H, I, B WHERE (B>2012) ', HealthVsGDPSpendingResponseHandler);
+            drawSheetName('Ex1', 'SELECT A, C, H, J, B WHERE (B>2012) ', MilitaryVsGDPSpendingResponseHandler);
 
-            // drawSheetName('Ex1', 'SELECT A, C, H, I,  B WHERE (B>2012) ', HealthVsGDPSpendingResponseHandler);
+            drawSheetName('Ex1', 'SELECT A, D, F ', EducationVsMilitarySpendingResponseHandler);
+            drawSheetName('Ex1', 'SELECT A, G, F ', HealthVsMilitarySpendingResponseHandler);
+            // drawSheetName('Ex2', 'SELECT A,B,C,D,E,F,G ', HealthVsMilitarySpendingResponseHandler);
+
+             drawSheetName('Sheet1', 'SELECT A, D, I, F WHERE (D>2012) ', EduPerCapitaVsGDPperCapitaSpendingResponseHandler);
+            //  drawSheetName('Ex1', 'SELECT A, G, F ', HealthPerCapitaVsGDPperCapitaSpendingResponseHandler);
+            //  drawSheetName('Ex1', 'SELECT A, G, F ', MilitaryPerCapitaVsGDPperCapitaSpendingResponseHandler);
+            //  drawSheetName('Ex1', 'SELECT A, G, F ', FastesGrowthCountryResponseHandler);
+
+
+            // drawSheetName('Ex2', 'SELECT A,B,C,D,E,F,G ', drawSarahChart);
+            // drawSheetName('Ex2', 'SELECT I,J,K,L,M,N,O ', drawAnthonyChart);
 
         } //drawAllSheets
 
@@ -38,7 +49,7 @@
         }//drawSheetName. This propertly encondes the link.
 
        
-        function EducationVsGDPSpendingResponseHandler(response){ //the response is the query that is coming to us.
+    function EducationVsGDPSpendingResponseHandler(response){ //the response is the query that is coming to us.
             var data = response.getDataTable();
             // Create a dashboard.
             var dashboard = new google.visualization.Dashboard(
@@ -84,7 +95,7 @@
         
         }//EducationVsGDPSpendingResponseHandler
 
-        // ---- Health vs GDP
+    // ---- Health vs GDP
 
     function HealthVsGDPSpendingResponseHandler(response){ //the response is the query that is coming to us.
             var data = response.getDataTable();
@@ -144,7 +155,251 @@
             dashboard.draw(data);
             }
             //***
-    
+
+    // ---- Military vs GDP
+
+    function MilitaryVsGDPSpendingResponseHandler(response){ //the response is the query that is coming to us.
+            var data = response.getDataTable();
+
+            // --------Dashboard-------------
+            // Create a dashboard.
+            var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div3'));
+
+            //---test
+            var programmaticFilter = new google.visualization.ControlWrapper({
+                controlType: 'CategoryFilter',
+                containerId: 'control_div3',
+                options: {filterColumnLabel: 'Year',
+                     ui: {labelStacking: 'vertical'}
+                    }
+            });
+           
+
+            // Create a Bubble chart, passing some options
+
+             var BubbleChartMilitary = new google.visualization.ChartWrapper({
+                'chartType': 'BubbleChart',
+                'containerId': 'chart_div_line_military',
+                'options': {
+                    title:'GDP vs Military Spending',
+                    'width': 800,
+                    'height': 500,
+                    'legend': 'right',
+                    hAxis: {title: 'GDP (USD Billions)',
+                            logScale:'true'},
+                    vAxis: {title: '%Military as part of GDP',
+                            format: 'Percent'},
+                            colorAxis:{values:'Year'},
+                    // colorAxis: {colors: ['yellow', 'red']},
+                    bubble: {textStyle: {fontSize: 11}}
+                },
+            });
+
+            // BubbleChartEdu.setOption('title', 'GDP vs Military Spending');
+
+             // Establish dependencies, declaring that 'filter' drives 'pieChart',
+            // so that the pie chart will only display entries that are let through
+            // given the chosen slider range.
+            //****
+            dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
+            dashboard.draw(data);
+            }
+            
+
+    // ---- Education Spending Vs Military Spending
+    function EducationVsMilitarySpendingResponseHandler(response){ //the response is the query that is coming to us.
+            var data = response.getDataTable();
+
+            // --------Dashboard-------------
+            // Create a dashboard.
+            var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div4'));
+
+            //---test
+            var programmaticFilter = new google.visualization.ControlWrapper({
+                controlType: 'CategoryFilter',
+                containerId: 'control_div4',
+                options: {filterColumnLabel: 'CountryCode',
+                     ui: {labelStacking: 'vertical'}
+                    }
+            });
+            //endtest
+            
+            // // Create a range slider, passing some options
+            // var donutRangeSlider = new google.visualization.ControlWrapper({
+            //     'controlType': 'NumberRangeFilter',
+            //     'containerId': 'filter_div',
+            //     'options': {
+            //         'filterColumnLabel': 'Year'
+            //     }
+            // });
+
+            // Create a Bubble chart, passing some options
+
+             var BubbleChartMilitary = new google.visualization.ChartWrapper({
+                'chartType': 'LineChart',
+                'containerId': 'chart_div_line_EvsM',
+                'options': {
+                    title:'Education Spending vs Military Spending',
+                    'width': 800,
+                    'height': 500,
+                    'legend': 'right',
+                    hAxis: {title: 'GDP (USD Billions)',
+                            logScale:'false'},
+                    vAxis: {title: '%Military as part of GDP',
+                            format: '$'},
+                            colorAxis:{values:'Year'},
+                    // colorAxis: {colors: ['yellow', 'red']},
+                    bubble: {textStyle: {fontSize: 11}}
+                },
+            });
+
+            // BubbleChartEdu.setOption('title', 'GDP vs Military Spending');
+
+             // Establish dependencies, declaring that 'filter' drives 'pieChart',
+            // so that the pie chart will only display entries that are let through
+            // given the chosen slider range.
+            //****
+            dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
+            dashboard.draw(data);
+            }
+            //***
+
+    // ---- Healthcare Spending Vs Military Spending
+    function HealthVsMilitarySpendingResponseHandler(response){ //the response is the query that is coming to us.
+            var data = response.getDataTable();
+
+            // --------Dashboard-------------
+            // Create a dashboard.
+            var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div5'));
+
+            //---test
+            var programmaticFilter = new google.visualization.ControlWrapper({
+                controlType: 'CategoryFilter',
+                containerId: 'control_div5',
+                options: {filterColumnLabel: 'CountryCode',
+                     ui: {labelStacking: 'vertical'}
+                    }
+            });
+            //endtest
+
+            // Create a Bubble chart, passing some options
+
+             var BubbleChartMilitary = new google.visualization.ChartWrapper({
+                'chartType': 'AreaChart',
+                'containerId': 'chart_div_line_HvsM',
+                'options': {
+                    title:'Healthcare Spending vs Military Spending',
+                    'width': 800,
+                    'height': 500,
+                    'legend': 'right',
+                    hAxis: {title: 'GDP (USD Billions)',
+                            logScale:'false'},
+                    vAxis: {title: '%Military as part of GDP',
+                            format: '$'},
+                            colorAxis:{values:'Year'},
+                    // colorAxis: {colors: ['yellow', 'red']},
+                    bubble: {textStyle: {fontSize: 11}}
+                },
+            });
+
+            // BubbleChartEdu.setOption('title', 'GDP vs Military Spending');
+
+             // Establish dependencies, declaring that 'filter' drives 'pieChart',
+            // so that the pie chart will only display entries that are let through
+            // given the chosen slider range.
+            //****
+            dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
+            dashboard.draw(data);
+            }
+            //***
+
+    // ---- Education per Capita Vs GDP per Capita
+    function EduPerCapitaVsGDPperCapitaSpendingResponseHandler(response){ //the response is the query that is coming to us.
+            var data = response.getDataTable();
+
+            // --------Dashboard-------------
+            // Create a dashboard.
+            var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div6'));
+
+            //---test
+            var programmaticFilter = new google.visualization.ControlWrapper({
+                controlType: 'CategoryFilter',
+                containerId: 'control_div6',
+                options: {filterColumnLabel: 'Year',
+                     ui: {labelStacking: 'vertical'}
+                    }
+            });
+            //endtest
+
+            // Create a chart, passing some options
+             var BubbleChartMilitary = new google.visualization.ChartWrapper({
+                'chartType': 'LineChart',
+                'containerId': 'chart_div_line_EduPCvsGDPPC',
+                'options': {
+                    title:'Education Spending per Capita vs GDP per Capita',
+                    'width': 800,
+                    'height': 500,
+                    'legend': 'right',
+                    hAxis: {title: 'GDP (USD Billions)',
+                            logScale:'false'},
+                    vAxis: {title: 'XX',
+                            format: '$'},
+                            colorAxis:{values:'Year'},
+                    // colorAxis: {colors: ['yellow', 'red']},
+                    bubble: {textStyle: {fontSize: 11}}
+                },
+            });
+
+            // BubbleChartEdu.setOption('title', 'GDP vs Military Spending');
+
+             // Establish dependencies, declaring that 'filter' drives 'pieChart',
+            // so that the pie chart will only display entries that are let through
+            // given the chosen slider range.
+            //****
+            dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
+            dashboard.draw(data);
+            }
+            //***
+
+            //*******test
+
+    //         // Callback that draws the pie chart for Sarah's pizza.
+    //   function drawSarahChart(response) {
+    //         var data = response.getDataTable();
+    //         // Create the data table for Sarah's pizza.
+            
+
+    //         // Set options for Sarah's pie chart.
+    //         var options = {title:'How Much Pizza Sarah Ate Last Night',
+    //                     width:500,
+    //                     height:500};
+
+    //         // Instantiate and draw the chart for Sarah's pizza.
+    //         var chart = new google.visualization.AreaChart(document.getElementById('Sarah_chart_div'));
+    //         chart.draw(data, options);
+    //     }
+
+        // // Callback that draws the pie chart for Anthony's pizza.
+        // function drawAnthonyChart(response) {
+
+        // // Create the data table for Anthony's pizza.
+        // var data = response.getDataTable();
+
+        // // Set options for Anthony's pie chart.
+        // var options = {title:'How Much Pizza Anthony Ate Last Night',
+        //             width:500,
+        //             height:500};
+
+        // // Instantiate and draw the chart for Anthony's pizza.
+        // var chart = new google.visualization.ScatterChart(document.getElementById('Anthony_chart_div'));
+        // chart.draw(data, options);
+        // }
+
+            
 
         
         
@@ -281,10 +536,40 @@
     </div>
 
     <!-- Plot %Military vs GDP -->
-    <!-- <div class="ggl-dashboard" id="dashboard_div3">
+    <div class="ggl-dashboard" id="dashboard_div3">
         <div class="ggl-control" id="control_div3"></div>
         <div id="chart_div_line_military"></div>
-    </div> -->
+    </div>
+
+     <!-- Plot Education Spending vs Military Spending -->
+     <div class="ggl-dashboard" id="dashboard_div4">
+        <div class="ggl-control" id="control_div4"></div>
+        <div id="chart_div_line_EvsM"></div>
+    </div>
+
+    <!-- Plot Healthcare Spending vs Military Spending -->
+    <div class="ggl-dashboard" id="dashboard_div5">
+        <div class="ggl-control" id="control_div5"></div>
+        <div id="chart_div_line_HvsM"></div>
+    </div>
+
+    <!-- Plot Education per capita vs GDP per Capita -->
+    <div class="ggl-dashboard" id="dashboard_div6">
+            <div class="ggl-control" id="control_div6"></div>
+            <div id="chart_div_line_EduPCvsGDPPC"></div>
+        </div>
+
+
+    <!--Table and divs that hold the pie charts-->
+    <!-- <table class="columns">
+        <tr>
+          <td><div id="Sarah_chart_div" style="border: 1px solid #ccc"></div></td>
+          <td><div id="Anthony_chart_div" style="border: 1px solid #ccc"></div></td>
+        </tr>
+      </table> -->
+
+      
+    
 
 
 
