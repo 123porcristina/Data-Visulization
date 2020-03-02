@@ -32,9 +32,14 @@
             // drawSheetName('Ex2', 'SELECT A,B,C,D,E,F,G ', HealthVsMilitarySpendingResponseHandler);
 
              drawSheetName('Sheet1', 'SELECT A, D, I, F WHERE (D>2012) ', EduPerCapitaVsGDPperCapitaSpendingResponseHandler);
-            //  drawSheetName('Ex1', 'SELECT A, G, F ', HealthPerCapitaVsGDPperCapitaSpendingResponseHandler);
-            //  drawSheetName('Ex1', 'SELECT A, G, F ', MilitaryPerCapitaVsGDPperCapitaSpendingResponseHandler);
-            //  drawSheetName('Ex1', 'SELECT A, G, F ', FastesGrowthCountryResponseHandler);
+             drawSheetName('Healthcare', 'SELECT R, S, T ', HealthPerCapitaVsGDPperCapitaSpendingResponseHandler);
+             drawSheetName('Military', 'SELECT Q, R, S ', MilitaryPerCapitaVsGDPperCapitaSpendingResponseHandler);
+             drawSheetName('GrowthHealth', 'SELECT A, H ', FastesGrowthCountryHealthResponseHandler);
+             drawSheetName('GrowthEdu', 'SELECT A, H ', FastesGrowthCountryEduResponseHandler);
+
+             drawSheetName('GrowthHealthEdu', 'SELECT A, B, C ', FastesGrowthCountryPecentResponseHandler);
+
+             
 
 
             // drawSheetName('Ex2', 'SELECT A,B,C,D,E,F,G ', drawSarahChart);
@@ -365,39 +370,199 @@
             }
             //***
 
+    // ---- Healthcare per Capita Vs GDP per Capita
+    function HealthPerCapitaVsGDPperCapitaSpendingResponseHandler(response){ //the response is the query that is coming to us.
+            var data = response.getDataTable();
+
+            // --------Dashboard-------------
+            // Create a dashboard.
+            var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div7'));
+
+            //---test
+            var programmaticFilter = new google.visualization.ControlWrapper({
+                controlType: 'CategoryFilter',
+                containerId: 'control_div7',
+                options: {filterColumnLabel: 'Country',
+                     ui: {labelStacking: 'vertical'}
+                    }
+            });
+            //endtest
+
+            // Create a chart, passing some options
+             var BubbleChartMilitary = new google.visualization.ChartWrapper({
+                'chartType': 'BarChart',
+                'containerId': 'chart_div_line_HealtPCvsGDPPC',
+                'options': {
+                    title:'Education Spending per Capita vs GDP per Capita',
+                    'width': 800,
+                    'height': 500,
+                    'legend': 'right',
+                    hAxis: {title: 'GDP (USD Billions)',
+                            logScale:'false'},
+                    vAxis: {title: 'XX',
+                            format: '$'},
+                            colorAxis:{values:'Year'},
+                    // colorAxis: {colors: ['yellow', 'red']},
+                    bubble: {textStyle: {fontSize: 11}}
+                },
+            });
+
+            // BubbleChartEdu.setOption('title', 'GDP vs Military Spending');
+
+             // Establish dependencies, declaring that 'filter' drives 'pieChart',
+            // so that the pie chart will only display entries that are let through
+            // given the chosen slider range.
+            //****
+            dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
+            dashboard.draw(data);
+            }
+
+    // ---- Military per Capita Vs GDP per Capita
+    function MilitaryPerCapitaVsGDPperCapitaSpendingResponseHandler(response){ //the response is the query that is coming to us.
+            var data = response.getDataTable();
+
+            // --------Dashboard-------------
+            // Create a dashboard.
+            var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div8'));
+
+            //---test
+            var programmaticFilter = new google.visualization.ControlWrapper({
+                controlType: 'CategoryFilter',
+                containerId: 'control_div8',
+                options: {filterColumnLabel: 'Country',
+                     ui: {labelStacking: 'vertical'}
+                    }
+            });
+            //endtest
+
+            // Create a chart, passing some options
+             var BubbleChartMilitary = new google.visualization.ChartWrapper({
+                'chartType': 'ColumnChart',
+                'containerId': 'chart_div_line_MilitaryPCvsGDPPC',
+                'options': {
+                    title:'Military Spending per Capita vs GDP per Capita',
+                    'width': 800,
+                    'height': 500,
+                    'legend': 'right',
+                    hAxis: {title: 'GDP (USD Billions)',
+                            logScale:'false'},
+                    vAxis: {title: 'XX',
+                            format: '$'},
+                            colorAxis:{values:'Year'},
+                    // colorAxis: {colors: ['yellow', 'red']},
+                    bubble: {textStyle: {fontSize: 11}}
+                },
+            });
+
+            // BubbleChartEdu.setOption('title', 'GDP vs Military Spending');
+
+             // Establish dependencies, declaring that 'filter' drives 'pieChart',
+            // so that the pie chart will only display entries that are let through
+            // given the chosen slider range.
+            //****
+            dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
+            dashboard.draw(data);
+            }
+
+
+
             //*******test
 
-    //         // Callback that draws the pie chart for Sarah's pizza.
-    //   function drawSarahChart(response) {
-    //         var data = response.getDataTable();
-    //         // Create the data table for Sarah's pizza.
+            // Callback that draws the pie chart for Sarah's pizza.
+      function FastesGrowthCountryHealthResponseHandler(response) {
+           
+            // Create the data table for Sarah's pizza.
+            var data = response.getDataTable();
+            data.sort({column: 1, desc:true});
+
+            //  var options = {title:'How Much Pizza Sarah Ate Last Night',
+            //            width:400,
+            //            height:300};
             
+           var options = {
+                width:600,
+                height: 400,
+                colorAxis: {colors: ['#E7711C', '#4374E0']},//orange to blue
+                title: 'Fastest growing Countries in Healthcare '
+            };
 
-    //         // Set options for Sarah's pie chart.
-    //         var options = {title:'How Much Pizza Sarah Ate Last Night',
-    //                     width:500,
-    //                     height:500};
+            var chart = new google.visualization.GeoChart(document.getElementById("Sarah_chart_div"));
+            chart.draw(data, options);
+        } //topMilitarySpendingResponseHandler
 
-    //         // Instantiate and draw the chart for Sarah's pizza.
-    //         var chart = new google.visualization.AreaChart(document.getElementById('Sarah_chart_div'));
-    //         chart.draw(data, options);
-    //     }
+        // Callback that draws the pie chart for Anthony's pizza.
+        function FastesGrowthCountryEduResponseHandler(response) {
 
-        // // Callback that draws the pie chart for Anthony's pizza.
-        // function drawAnthonyChart(response) {
-
-        // // Create the data table for Anthony's pizza.
-        // var data = response.getDataTable();
-
-        // // Set options for Anthony's pie chart.
+        // Create the data table for Anthony's pizza.
+         var data = response.getDataTable();
+         data.sort({column: 1, desc:true});
+            
+           // Set options for Anthony's pie chart.
         // var options = {title:'How Much Pizza Anthony Ate Last Night',
-        //             width:500,
-        //             height:500};
+        //                width:400,
+        //                height:300};
 
-        // // Instantiate and draw the chart for Anthony's pizza.
-        // var chart = new google.visualization.ScatterChart(document.getElementById('Anthony_chart_div'));
-        // chart.draw(data, options);
-        // }
+           var options = {
+                width:600,
+                height: 400,
+                // colorAxis: {colors: ['#E7711C', '#4374E0']},//orange to blue
+                title: 'Fastest growing countries in educational spending '
+            };
+
+        // Instantiate and draw the chart for Anthony's pizza.
+        var chart = new google.visualization.GeoChart(document.getElementById('Anthony_chart_div'));
+        chart.draw(data, options);
+        }
+
+    // Fastest growing countries in healthcare and educational spending  in percentage
+    function FastesGrowthCountryPecentResponseHandler(response){ //the response is the query that is coming to us.
+            var data = response.getDataTable();
+
+            // --------Dashboard-------------
+            // Create a dashboard.
+            var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div9'));
+
+            //---test
+            var programmaticFilter = new google.visualization.ControlWrapper({
+                controlType: 'CategoryFilter',
+                containerId: 'control_div9',
+                options: {filterColumnLabel: 'Country',
+                     ui: {labelStacking: 'vertical'}
+                    }
+            });
+            //endtest
+
+            // Create a chart, passing some options
+             var BubbleChartMilitary = new google.visualization.ChartWrapper({
+                'chartType': 'LineChart',
+                'containerId': 'chart_div_line_fastGrowth',
+                'options': {
+                    title:'Growth in percentage',
+                    'width': 800,
+                    'height': 500,
+                    'legend': 'right',
+                    hAxis: {title: 'GDP (USD Billions)',
+                            logScale:'false'},
+                    vAxis: {title: 'XX',
+                            format: '$'},
+                            colorAxis:{values:'Year'},
+                    // colorAxis: {colors: ['yellow', 'red']},
+                    bubble: {textStyle: {fontSize: 11}}
+                },
+            });
+
+            // BubbleChartEdu.setOption('title', 'GDP vs Military Spending');
+
+             // Establish dependencies, declaring that 'filter' drives 'pieChart',
+            // so that the pie chart will only display entries that are let through
+            // given the chosen slider range.
+            //****
+            dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
+            dashboard.draw(data);
+            }
 
             
 
@@ -555,23 +720,37 @@
 
     <!-- Plot Education per capita vs GDP per Capita -->
     <div class="ggl-dashboard" id="dashboard_div6">
-            <div class="ggl-control" id="control_div6"></div>
-            <div id="chart_div_line_EduPCvsGDPPC"></div>
+        <div class="ggl-control" id="control_div6"></div>
+        <div id="chart_div_line_EduPCvsGDPPC"></div>
+    </div>
+    
+    <!-- Plot Healthcare per capita vs GDP per Capita -->
+    <div class="ggl-dashboard" id="dashboard_div7">
+        <div class="ggl-control" id="control_div7"></div>
+        <div id="chart_div_line_HealtPCvsGDPPC"></div>
+    </div>
+
+     <!-- Plot Military per capita vs GDP per Capita -->
+     <div class="ggl-dashboard" id="dashboard_div8">
+            <div class="ggl-control" id="control_div8"></div>
+            <div id="chart_div_line_MilitaryPCvsGDPPC"></div>
         </div>
 
 
+    
     <!--Table and divs that hold the pie charts-->
-    <!-- <table class="columns">
+    <table class="columns">
         <tr>
           <td><div id="Sarah_chart_div" style="border: 1px solid #ccc"></div></td>
           <td><div id="Anthony_chart_div" style="border: 1px solid #ccc"></div></td>
         </tr>
-      </table> -->
+      </table>
 
-      
-    
-
-
+      <!-- Plot Military per capita vs GDP per Capita -->
+     <div class="ggl-dashboard" id="dashboard_div9">
+            <div class="ggl-control" id="control_div9"></div>
+            <div id="chart_div_line_fastGrowth"></div>
+        </div>
 
 </body>
 </html>
