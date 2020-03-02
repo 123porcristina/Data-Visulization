@@ -25,7 +25,7 @@
         function drawAllSheets(){
             drawSheetName('Ex1', 'SELECT A, C, E, B WHERE (B>2012)', EducationVsGDPSpendingResponseHandler);
 
-            // drawSheetName('Ex1', 'SELECT A, C, H, I, B WHERE (B>2012) ', HealthVsGDPSpendingResponseHandler);
+            drawSheetName('Ex1', 'SELECT A, C, H, I, B WHERE (B>2012) ', HealthVsGDPSpendingResponseHandler);
 
             // drawSheetName('Ex1', 'SELECT A, C, H, I,  B WHERE (B>2012) ', HealthVsGDPSpendingResponseHandler);
 
@@ -82,7 +82,68 @@
         // Draw the dashboard.
         dashboard.draw(data);
         
-        }
+        }//EducationVsGDPSpendingResponseHandler
+
+        // ---- Health vs GDP
+
+    function HealthVsGDPSpendingResponseHandler(response){ //the response is the query that is coming to us.
+            var data = response.getDataTable();
+
+            // --------Dashboard-------------
+            // Create a dashboard.
+            var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div2'));
+
+            //---test
+            var programmaticFilter = new google.visualization.ControlWrapper({
+                controlType: 'CategoryFilter',
+                containerId: 'control_div2',
+                options: {filterColumnLabel: 'Year',
+                     ui: {labelStacking: 'vertical'}
+                    }
+            });
+            //endtest
+            
+            // // Create a range slider, passing some options
+            // var donutRangeSlider = new google.visualization.ControlWrapper({
+            //     'controlType': 'NumberRangeFilter',
+            //     'containerId': 'filter_div',
+            //     'options': {
+            //         'filterColumnLabel': 'Year'
+            //     }
+            // });
+
+            // Create a Bubble chart, passing some options
+
+             var LineChartHealth = new google.visualization.ChartWrapper({
+                'chartType': 'BubbleChart',
+                'containerId': 'chart_div_line_health',
+                'options': {
+                    title:'GDP vs Healthcare',
+                    'width': 800,
+                    'height': 500,
+                    'legend': 'right',
+                    hAxis: {title: 'GDP (USD Billions)',
+                            logScale:'true'},
+                    vAxis: {title: '%Education as part of GDP',
+                            format: 'Percent'},
+                            colorAxis:{values:'Year'},
+                    // colorAxis: {colors: ['yellow', 'red']},
+                    bubble: {textStyle: {fontSize: 11}}
+                },
+            });
+
+            //****
+            // BubbleChartEdu.setOption('title', 'Carlos');
+
+             // Establish dependencies, declaring that 'filter' drives 'pieChart',
+            // so that the pie chart will only display entries that are let through
+            // given the chosen slider range.
+            //****
+            dashboard.bind(programmaticFilter, [LineChartHealth]);
+            dashboard.draw(data);
+            }
+            //***
     
 
         
@@ -203,7 +264,6 @@
     <div class="ggl-dashboard" id="dashboard_div">
         <div class="ggl-control" id="control_div"></div>
         <div class="ggl-chart" id="chart_div"></div>
-        <!-- <div class="ggl-chart" id="chart_div_Josh"></div> -->
       </div>
 
     <!-- <div class="ggl-dashboard" id="dashboard_div">
@@ -215,10 +275,10 @@
     <!-- </div> -->
 
     <!-- Plot %Healthcare vs GDP -->
-    <!-- <div class="ggl-dashboard" id="dashboard_div2">
+    <div class="ggl-dashboard" id="dashboard_div2">
         <div class="ggl-control" id="control_div2"></div>
         <div id="chart_div_line_health"></div>
-    </div> -->
+    </div>
 
     <!-- Plot %Military vs GDP -->
     <!-- <div class="ggl-dashboard" id="dashboard_div3">
