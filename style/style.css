@@ -43,11 +43,11 @@ header{
     border: 1px solid white;
 }
 
-.logo img{
+/* .logo img{
     width: 150px;
     height: auto;
     float: left;
-}
+} */
 
 body{
     font-family: monospace;

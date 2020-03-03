@@ -39,12 +39,6 @@
 
              drawSheetName('GrowthHealthEdu', 'SELECT A, B, C ', FastesGrowthCountryPecentResponseHandler);
 
-             
-
-
-            // drawSheetName('Ex2', 'SELECT A,B,C,D,E,F,G ', drawSarahChart);
-            // drawSheetName('Ex2', 'SELECT I,J,K,L,M,N,O ', drawAnthonyChart);
-
         } //drawAllSheets
 
         function drawSheetName(sheetName, query, responseHandler){
@@ -77,8 +71,8 @@
                 'chartType': 'BubbleChart',
                 'containerId': 'chart_div',
                 'options': {title:'GDP vs Eduaction',
-                            'width': 700,
-                            'height': 500,
+                            'width': 600,
+                            'height': 400,
                             'legend': 'right',
                             hAxis: {title: 'GDP (USD Billions)',
                             logScale:'true'},
@@ -118,17 +112,7 @@
                      ui: {labelStacking: 'vertical'}
                     }
             });
-            //endtest
-            
-            // // Create a range slider, passing some options
-            // var donutRangeSlider = new google.visualization.ControlWrapper({
-            //     'controlType': 'NumberRangeFilter',
-            //     'containerId': 'filter_div',
-            //     'options': {
-            //         'filterColumnLabel': 'Year'
-            //     }
-            // });
-
+           
             // Create a Bubble chart, passing some options
 
              var LineChartHealth = new google.visualization.ChartWrapper({
@@ -136,8 +120,8 @@
                 'containerId': 'chart_div_line_health',
                 'options': {
                     title:'GDP vs Healthcare',
-                    'width': 700,
-                    'height': 500,
+                    'width': 600,
+                    'height': 400,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
                             logScale:'true'},
@@ -149,17 +133,15 @@
                 },
             });
 
-            //****
-            // BubbleChartEdu.setOption('title', 'Carlos');
 
              // Establish dependencies, declaring that 'filter' drives 'pieChart',
             // so that the pie chart will only display entries that are let through
             // given the chosen slider range.
-            //****
+            
             dashboard.bind(programmaticFilter, [LineChartHealth]);
             dashboard.draw(data);
             }
-            //***
+           
 
     // ---- Military vs GDP
 
@@ -188,8 +170,8 @@
                 'containerId': 'chart_div_line_military',
                 'options': {
                     title:'GDP vs Military Spending',
-                    'width': 700,
-                    'height': 500,
+                    'width': 600,
+                    'height': 400,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
                             logScale:'true'},
@@ -201,12 +183,10 @@
                 },
             });
 
-            // BubbleChartEdu.setOption('title', 'GDP vs Military Spending');
-
              // Establish dependencies, declaring that 'filter' drives 'pieChart',
             // so that the pie chart will only display entries that are let through
             // given the chosen slider range.
-            //****
+            
             dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
             dashboard.draw(data);
             }
@@ -221,7 +201,7 @@
             var dashboard = new google.visualization.Dashboard(
             document.getElementById('dashboard_div4'));
 
-            //---test
+           
             var programmaticFilter = new google.visualization.ControlWrapper({
                 controlType: 'CategoryFilter',
                 containerId: 'control_div4',
@@ -229,16 +209,6 @@
                      ui: {labelStacking: 'vertical'}
                     }
             });
-            //endtest
-            
-            // // Create a range slider, passing some options
-            // var donutRangeSlider = new google.visualization.ControlWrapper({
-            //     'controlType': 'NumberRangeFilter',
-            //     'containerId': 'filter_div',
-            //     'options': {
-            //         'filterColumnLabel': 'Year'
-            //     }
-            // });
 
             // Create a Bubble chart, passing some options
 
@@ -247,8 +217,8 @@
                 'containerId': 'chart_div_line_EvsM',
                 'options': {
                     title:'Education Spending vs Military Spending',
-                    'width': 700,
-                    'height': 500,
+                    'width': 600,
+                    'height': 400,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
                             logScale:'false'},
@@ -265,11 +235,11 @@
              // Establish dependencies, declaring that 'filter' drives 'pieChart',
             // so that the pie chart will only display entries that are let through
             // given the chosen slider range.
-            //****
+            
             dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
             dashboard.draw(data);
             }
-            //***
+            
 
     // ---- Healthcare Spending Vs Military Spending
     function HealthVsMilitarySpendingResponseHandler(response){ //the response is the query that is coming to us.
@@ -297,8 +267,8 @@
                 'containerId': 'chart_div_line_HvsM',
                 'options': {
                     title:'Healthcare Spending vs Military Spending',
-                    'width': 700,
-                    'height': 500,
+                    'width': 600,
+                    'height': 400,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
                             logScale:'false'},
@@ -346,8 +316,8 @@
                 'containerId': 'chart_div_line_EduPCvsGDPPC',
                 'options': {
                     title:'Education Spending per Capita vs GDP per Capita',
-                    'width': 700,
-                    'height': 500,
+                    'width': 600,
+                    'height': 400,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
                             logScale:'false'},
@@ -364,11 +334,11 @@
              // Establish dependencies, declaring that 'filter' drives 'pieChart',
             // so that the pie chart will only display entries that are let through
             // given the chosen slider range.
-            //****
+          
             dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
             dashboard.draw(data);
             }
-            //***
+          
 
     // ---- Healthcare per Capita Vs GDP per Capita
     function HealthPerCapitaVsGDPperCapitaSpendingResponseHandler(response){ //the response is the query that is coming to us.
@@ -395,8 +365,8 @@
                 'containerId': 'chart_div_line_HealtPCvsGDPPC',
                 'options': {
                     title:'Education Spending per Capita vs GDP per Capita',
-                    'width': 700,
-                    'height': 500,
+                    'width': 600,
+                    'height': 400,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
                             logScale:'false'},
@@ -413,7 +383,6 @@
              // Establish dependencies, declaring that 'filter' drives 'pieChart',
             // so that the pie chart will only display entries that are let through
             // given the chosen slider range.
-            //****
             dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
             dashboard.draw(data);
             }
@@ -427,7 +396,6 @@
             var dashboard = new google.visualization.Dashboard(
             document.getElementById('dashboard_div8'));
 
-            //---test
             var programmaticFilter = new google.visualization.ControlWrapper({
                 controlType: 'CategoryFilter',
                 containerId: 'control_div8',
@@ -435,7 +403,7 @@
                      ui: {labelStacking: 'vertical'}
                     }
             });
-            //endtest
+
 
             // Create a chart, passing some options
              var BubbleChartMilitary = new google.visualization.ChartWrapper({
@@ -443,8 +411,8 @@
                 'containerId': 'chart_div_line_MilitaryPCvsGDPPC',
                 'options': {
                     title:'Military Spending per Capita vs GDP per Capita',
-                    'width': 700,
-                    'height': 500,
+                    'width': 600,
+                    'height': 400,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
                             logScale:'false'},
@@ -466,20 +434,12 @@
             dashboard.draw(data);
             }
 
-
-
-            //*******test
-
-            // Callback that draws the pie chart for Sarah's pizza.
+     // Callback that draws the pie chart for Sarah's pizza.
       function FastesGrowthCountryHealthResponseHandler(response) {
            
             // Create the data table for Sarah's pizza.
             var data = response.getDataTable();
             data.sort({column: 1, desc:true});
-
-            //  var options = {title:'How Much Pizza Sarah Ate Last Night',
-            //            width:400,
-            //            height:300};
             
            var options = {
                 width:600,
@@ -499,10 +459,6 @@
          var data = response.getDataTable();
          data.sort({column: 1, desc:true});
             
-           // Set options for Anthony's pie chart.
-        // var options = {title:'How Much Pizza Anthony Ate Last Night',
-        //                width:400,
-        //                height:300};
 
            var options = {
                 width:600,
@@ -525,7 +481,7 @@
             var dashboard = new google.visualization.Dashboard(
             document.getElementById('dashboard_div9'));
 
-            //---test
+            //-Create filter
             var programmaticFilter = new google.visualization.ControlWrapper({
                 controlType: 'CategoryFilter',
                 containerId: 'control_div9',
@@ -533,16 +489,15 @@
                      ui: {labelStacking: 'vertical'}
                     }
             });
-            //endtest
-
+            
             // Create a chart, passing some options
              var BubbleChartMilitary = new google.visualization.ChartWrapper({
                 'chartType': 'LineChart',
                 'containerId': 'chart_div_line_fastGrowth',
                 'options': {
                     title:'Growth in percentage',
-                    'width': 700,
-                    'height': 500,
+                    'width': 600,
+                    'height': 400,
                     'legend': 'right',
                     hAxis: {title: 'GDP (USD Billions)',
                             logScale:'false'},
@@ -563,11 +518,7 @@
             dashboard.bind(programmaticFilter, [BubbleChartMilitary]);
             dashboard.draw(data);
             }
-
-            
-
-        
-        
+       
     
     </script>
     <!-- End Google API -->
@@ -576,9 +527,10 @@
 <body>
     <header>
         <div class="row">
-            <div class="logo">
+            <!-- <div class="logo">
                 <img src="" alt="">
-            </div>            
+            </div>             -->
+            <!-- menu -->
             <ul class="main-nav">
                 <li class="active"><a href="">HOME</a></li>
                 <li><a href="">ABOUT</a></li>
@@ -586,6 +538,7 @@
                 <li><a href="">OTHER</a></li>
             </ul>
         </div>
+        <!-- title -->
         <div class="mainTitle">
             <h1>Educational, Healthcare, and Military Spending in Relation to GDP of the G20 Countries </h1>
             <div class="button">
@@ -689,19 +642,19 @@
                 <div class="col-md-4 text-right">
                     <div class="analysisDataGDP-content">
                         <p>
-                            The chart presented in the left side revels something suprinsingly, 
-                            the higher the GDP of a country the less likely it is to spend in 
+                            The chart presented on the left side revels something suprinsing, 
+                            the higher the GDP of a country is the less likely it is to spend on 
                             education. <br />
 
-                            For instance, if we compare The United States with Turkey. We can see
-                            that even though the US has a big GDP (billions of USD), the education
+                            For instance, if we compare The United States with Turkey, we can see
+                            that even though the US has a larger GDP (billions of USD), the education
                             spending represents around 5 percent of the GDP. <br />
 
                             On the other hand, Turkey with a relatively small GDP compare with
-                            The United States of America has an Education spending around 12 percent.<br/>
+                            The United States of America has an education spending around 12 percent.<br/>
 
                             That shows that Turkey between the years 2013 and 2018 invested much more 
-                            in Education than the other countries in the Group G20.<br/>
+                            in Education than the other countries in the G20 Group with more GDP.<br/>
 
                         </p>
                     </div>
@@ -726,23 +679,13 @@
                     <div class="col-md-4 text-right">
                         <div class="analysisDataGDP-content">
                             <p>
-                            esto es una prueba para ver como funciona. asi que borralo! 
-                            The first value is the horizontal position and the second value 
-                            is the vertical. The top left corner is 0% 0%. The right bottom 
-                            corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                            Default value is: 0% 0%
-    
-                            esto es una prueba para ver como funciona. asi que borralo! 
-                            The first value is the horizontal position and the second value 
-                            is the vertical. The top left corner is 0% 0%. The right bottom 
-                            corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                            Default value is: 0% 0%
-    
-                            esto es una prueba para ver como funciona. asi que borralo! 
-                            The first value is the horizontal position and the second value 
-                            is the vertical. The top left corner is 0% 0%. The right bottom 
-                            corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                            Default value is: 0% 0%
+                                    This chart shows that most G20 countries spend similar amounts on the healthcare as a portion of GDP.
+                                    curiously, those countries located in the European region fromm 2013 to 2018 have remained constant 
+                                    in their healthcare spending. Although the United States does not have a higher spending in Education,
+                                    it has around 16 percent of spending in healthcare.<br/><br/>
+
+                                    Particularly, China, India and most of the Asia region had had and spending in healtcare of 4 percentage
+                                    in average during the five-year period mentioned before.
                             </p>
                         </div>
                     </div>
@@ -766,23 +709,12 @@
                 <div class="col-md-4 text-right">
                     <div class="analysisDataGDP-content">
                         <p>
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
-
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
-
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
+                            This chart shows that most G20 countries spend similar amounts on the military as a portion of GDP.
+                            Interestingly, there are a few outliers.  Notably, the United States devotes a much larger percentage of
+                            its GDP to the military than other G20 countries, while China spends a comparatively low amount on its military.
+                            <br/><br/>
+                            The data in this chart was relatively consistent in the years shown, indicating that the ratio of Military
+                            spending to GDP is fairly inelastic.  
                         </p>
                     </div>
                 </div>
@@ -806,23 +738,14 @@
                     <div class="col-md-4 text-right">
                         <div class="analysisDataGDP-content">
                             <p>
-                            esto es una prueba para ver como funciona. asi que borralo! 
-                            The first value is the horizontal position and the second value 
-                            is the vertical. The top left corner is 0% 0%. The right bottom 
-                            corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                            Default value is: 0% 0%
-    
-                            esto es una prueba para ver como funciona. asi que borralo! 
-                            The first value is the horizontal position and the second value 
-                            is the vertical. The top left corner is 0% 0%. The right bottom 
-                            corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                            Default value is: 0% 0%
-    
-                            esto es una prueba para ver como funciona. asi que borralo! 
-                            The first value is the horizontal position and the second value 
-                            is the vertical. The top left corner is 0% 0%. The right bottom 
-                            corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                            Default value is: 0% 0%
+                                The chart shows that the education spending related to military spending.
+                                In most cases education expenditures have been higher than military expenditures with 
+                                the exception of two countries: China and Japan. <br/><br/>
+
+                                China has been exponentially increasing its expenditures in military. On the other hand, we 
+                                observe that at some point Japan increased its spending in education but later on this spending dropped.
+                                This same case can be observed for Turkey.
+                            
                             </p>
                         </div>
                     </div>
@@ -847,23 +770,15 @@
                 <div class="col-md-4 text-right">
                     <div class="analysisDataGDP-content">
                         <p>
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
+                            Although there are some increases in military expenditures given for China and the Unitated States, 
+                            it is observed in the chart that the spending in military has been lower in comparison with healthcare.
 
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
+                            <br/><br/>
 
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
+                            We also can see some spikes in healthcare expenditures for countries such as China, France, Germany, Japan and the United States.
+                            Remarkable, The U.S. has been the biggest spender in healthcare and Argentina the lowest. According to the
+                            data from 2000 to 2018.
+
                         </p>
                     </div>
                 </div>
@@ -887,23 +802,10 @@
                 <div class="col-md-4 text-right">
                     <div class="analysisDataGDP-content">
                         <p>
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
-
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
-
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
+                            In a period of 6 years from 2013 to 2018, the chart shows that the educations spending
+                            per capita is significative lower in comparison to the GDP per capita. Also, It can be 
+                            observed that the expenditures in education per person have remained steadily during the 
+                            6 years. <br/><br/>
                         </p>
                     </div>
                 </div>
@@ -927,23 +829,13 @@
                 <div class="col-md-4 text-right">
                     <div class="analysisDataGDP-content">
                         <p>
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
-
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
-
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
+                            It can be observed in the chart that the healthcare expenditures for some countries are higher than from others.
+                            For instance, the United States of America had the highest spending in healthcare in comparison with the other G20 countries.
+                            <br/><br/>
+                            On the other hand, Mexico, Russia, South Africa, Turkey and China had the lowest expenditures in healthcare. Surprising,
+                            there are other countries like India and Indonesia without any expenditure in healtcare for the year 2018. However, the 
+                            India's and Indonesia's contries for the same period had GDP per capita relatively low in comparison to the other G20 countries.
+                       
                         </p>
                     </div>
                 </div>
@@ -968,23 +860,10 @@
                 <div class="col-md-4 text-right">
                     <div class="analysisDataGDP-content">
                         <p>
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
-
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
-
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
+                            The chart shows that for the year 2018, some countries did not have any military expenditures.Among them 
+                            are Argentina, Brazil, Indonesia and Turkey. Some of the other countries remain the same in the military spending.
+                            For instance, the United States of America and Saudi Arabia. Although, these two contries (the U.S and Saudi Arabia) are
+                            signficantlly different in regards to the GDP per capita, both had similar military expenditures.
                         </p>
                     </div>
                 </div>
@@ -1001,23 +880,13 @@
                 <div class="col-md-12 text-center">
                     <div class="analysisDataGDP-content">
                         <p>
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
+                            The map showed on the left side belongs to the "Fastest growing countries in healthcare spending in fixed value", 
+                            and the one located to the right side is "Fastest growing countries in educational spending in fixed values".
+                            <br/><br/>
 
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
-
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
+                            In both maps healtcare (left side) and education (right side), we can observe that the country with fastest growth 
+                            during the period 2013 to 2018 was China, followed by India, Saudi Arabia, and The United States. 
+                       
                         </p>
                     </div>
                 </div>
@@ -1053,23 +922,11 @@
                 <div class="col-md-4 text-right">
                     <div class="analysisDataGDP-content">
                         <p>
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
-
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
-
-                        esto es una prueba para ver como funciona. asi que borralo! 
-                        The first value is the horizontal position and the second value 
-                        is the vertical. The top left corner is 0% 0%. The right bottom 
-                        corner is 100% 100%. If you only specify one value, the other value will be 50%.
-                        Default value is: 0% 0%
+                            In the chart we can observed the growth percentage among the nations that belong to the G20. we can 
+                            see that during the 6-year period, the education growth in percentage was significative higher for China and Indonesia. Meanwhile,
+                            for Russia and Brazil the education growth was negative.
+                            <br/><br/>
+                            In contrast, Brasil had a postive healthcare growth.
                         </p>
                     </div>
                 </div>
