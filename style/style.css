@@ -296,12 +296,24 @@ that appear on the center of my page*/
     /* background-position: center; */
 
 }
-
+/* title h3 */
 h3{
     color: white;
     text-transform: uppercase;
     font-size: 60px;
     text-align: center!important;
     margin-top: 275px;
+}
+
+/* foot */
+#footer{
+    background: #001b48!important;
+    color: #ffffff;
+    padding: 12px;
+}
+
+.fa-heart-o{
+    margin: 3px;
+    color: red;
 }
 
